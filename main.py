@@ -56,7 +56,7 @@ if audioWav:
         st.write("Done")
 
     if st.button("Generate image"):
-        st.image(image_gen(image_prompt), caption=image_prompt)
+        st.image(image_gen(image_prompt), caption=image_prompt, use_container_width=True)
 
 else:
     st.write("Awaiting audio")
