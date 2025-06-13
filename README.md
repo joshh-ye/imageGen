@@ -1,6 +1,4 @@
-https://imagegen-jzaskmdzugdt3xrmvsakna.streamlit.app/
-
-# Conversation Image Generator
+# Conversation Image Generator - access website (here)['https://imagegen-jzaskmdzugdt3xrmvsakna.streamlit.app/]
 
 A Streamlit‐powered tool that lets you **record live conversations** or **upload existing transcripts** (in virtually any language), **extract the speaker’s key ideas**, and **turn them into evocative images** using an AI image‐generation model.
 
@@ -32,3 +30,4 @@ A Streamlit‐powered tool that lets you **record live conversations** or **uplo
 API_KEY_1={assembly-AI_API_key}  
 API_KEY_2={deepseek-v3_API_key}  
 API_KEY_3={huggingFaceAPI_key}  
+
