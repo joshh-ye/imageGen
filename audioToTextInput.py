@@ -1,11 +1,9 @@
 # Install the assemblyai package by executing the command "pip install assemblyai"
 
 import assemblyai as aai
-import os
-from dotenv import load_dotenv
+import streamlit as st
 
-load_dotenv()
-aai.settings.api_key = os.getenv("API_KEY_1")
+aai.settings.api_key = st.secrets["API_KEY_1"]
 
 # audio_file = "./local_file.mp3"
 

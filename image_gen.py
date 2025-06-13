@@ -1,12 +1,9 @@
 from huggingface_hub import InferenceClient
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
+import streamlit as st
 
 client = InferenceClient(
     provider="nebius",
-    api_key=os.getenv('API_KEY_3')
+    api_key=st.secrets["API_KEY_3"]
 )
 
 
