@@ -20,7 +20,7 @@ A Streamlit‐powered tool that lets you **record live conversations** or **uplo
 ## Installation
 
 1. **Clone the repo**  
-   ```
+   ```bash
    git clone https://github.com/your-username/conversation-image-generator.git
    cd conversation-image-generator
    python3 -m venv .venv
