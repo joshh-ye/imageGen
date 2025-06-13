@@ -1,4 +1,4 @@
-# Conversation Image Generator - access website (here)['https://imagegen-jzaskmdzugdt3xrmvsakna.streamlit.app/]
+# Conversation Image Generator - access website [here]('https://imagegen-jzaskmdzugdt3xrmvsakna.streamlit.app/')
 
 A Streamlit‐powered tool that lets you **record live conversations** or **upload existing transcripts** (in virtually any language), **extract the speaker’s key ideas**, and **turn them into evocative images** using an AI image‐generation model.
 
