@@ -20,7 +20,7 @@ A Streamlit‐powered tool that lets you **record live conversations** or **uplo
 ## Installation
 
 1. **Clone the repo**  
-   ```bash
+   ```
    git clone https://github.com/your-username/conversation-image-generator.git
    cd conversation-image-generator
    python3 -m venv .venv
@@ -29,6 +29,6 @@ A Streamlit‐powered tool that lets you **record live conversations** or **uplo
    pip install -r requirements.txt
 
 ### Create the .streamlit/secrets.toml and plug in your own API key
-API_KEY_1={assembly-AI_API_key}
-API_KEY_2={deepseek-v3_API_key}
-API_KEY_3={huggingFaceAPI_key}
+API_KEY_1={assembly-AI_API_key}  
+API_KEY_2={deepseek-v3_API_key}  
+API_KEY_3={huggingFaceAPI_key}  
