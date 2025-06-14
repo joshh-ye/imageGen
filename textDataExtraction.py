@@ -37,5 +37,3 @@ def extract_data(full_transcript: str) -> str:
     )
 
     return completion.choices[0].message.content
-
-print(extract_data("flowers"))

@@ -5,3 +5,9 @@ diffusers
 torch
 python-dotenv
 assemblyai
+
+#for drive image upload
+streamlit
+google-api-python-client
+google-auth
+google-auth-oauthlib

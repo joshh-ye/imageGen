@@ -4,6 +4,7 @@ import os, tempfile
 from audioToTextInput import transcribe_file
 from textDataExtraction import extract_data
 from image_gen import image_gen
+from driveUpload import upload_to_folder
 
 st.title("Transcribe audio, image generator. 转录音频、图像生成器")
 
@@ -57,7 +58,17 @@ if audioWav:
 
     if st.button("Generate image"):
         with st.spinner("Generating image"):
-            st.image(image_gen(image_prompt), caption=image_prompt, use_container_width=True)
+            pic = image_gen(image_prompt)
+            st.image(pic, caption=image_prompt, use_container_width=True)
+
+            with tempfile.NamedTemporaryFile(suffix='.jpg',
+                                             delete=False) as tmp:  # I'm uploading the file, and need the file type to automatically default to correct suffix
+                pic.save(tmp.name, format = "JPEG")
+
+                with st.spinner("Uploading..."):
+                    upload_to_folder(folder_id="1l_FSxH89e9iR6C32PcLWdqpJ3cdnEDPi", picPath=tmp.name)
+
+                st.write('done')
 
 else:
     st.write("Awaiting audio")
