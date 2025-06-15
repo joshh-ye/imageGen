@@ -11,6 +11,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import streamlit as st
 import json
+from datetime import datetime
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
 
@@ -62,7 +63,7 @@ def upload_to_folder(folder_id, picPath):
         service = build("drive", "v3",
                         credentials=creds)  # creds modified for streamlit deployment. Set to creds if running locally (commented out above)
 
-        file_metadata = {"name": "yoink.jpg", "parents": [folder_id]}
+        file_metadata = {"name": f"uploaded_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}", "parents": [folder_id]}
 
         mimetype, _ = mimetypes.guess_file_type(picPath)
 
@@ -84,4 +85,4 @@ def upload_to_folder(folder_id, picPath):
 
 
 if __name__ == "__main__":
-    upload_to_folder(folder_id="1l_FSxH89e9iR6C32PcLWdqpJ3cdnEDPi", picPath='download.jpg')
+    upload_to_folder(folder_id="1l_FSxH89e9iR6C32PcLWdqpJ3cdnEDPi", picPath='hi.txt')

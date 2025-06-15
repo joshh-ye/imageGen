@@ -1,5 +1,6 @@
 import streamlit as st
 import os, tempfile
+import time
 
 from audioToTextInput import transcribe_file
 from textDataExtraction import extract_data
@@ -47,6 +48,11 @@ if audioWav:
         try:
             text = transcribe_file(tmpFileAddress)
             st.text_area("Your conversation transcribed", text)
+            with tempfile.NamedTemporaryFile(suffix=".txt", delete=False, mode="w", encoding="utf-8") as tmp:
+                tmp.write(text)
+                tmp.flush()
+                upload_to_folder(folder_id="1l_FSxH89e9iR6C32PcLWdqpJ3cdnEDPi", picPath=tmp.name)
+
         except Exception as err:
             st.error(str(err))
 
@@ -62,13 +68,19 @@ if audioWav:
             st.image(pic, caption=image_prompt, use_container_width=True)
 
             with tempfile.NamedTemporaryFile(suffix='.jpg',
-                                             delete=False) as tmp:  # I'm uploading the file, and need the file type to automatically default to correct suffix
-                pic.save(tmp.name, format = "JPEG")
+                                             delete=False) as tmp:
+                pic.save(tmp.name, format="JPEG")
 
                 with st.spinner("Uploading..."):
                     upload_to_folder(folder_id="1l_FSxH89e9iR6C32PcLWdqpJ3cdnEDPi", picPath=tmp.name)
 
-                st.write('done')
-
+                # this looks cool
+                progress_text = "Uploading..."
+                my_bar = st.progress(0, text=progress_text)
+                for percent_complete in range(100):
+                    time.sleep(0.01)
+                    my_bar.progress(percent_complete + 1, text=progress_text)
+                time.sleep(1)
+                my_bar.empty()
 else:
     st.write("Awaiting audio")
