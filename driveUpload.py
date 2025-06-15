@@ -51,8 +51,16 @@ def upload_to_folder(folder_id, picPath):
 
     try:
         # create drive api client
-        creds = get_credentials()
-        service = build("drive", "v3", credentials=creds)
+
+        # using secrets.toml or get_credentials for local (non-streamlit)
+        if "token" in st.secrets:
+            tokenReadable = json.loads(st.secrets["token"])
+            creds = Credentials.from_authorized_user_info(tokenReadable, SCOPES)
+        else:
+            creds = get_credentials()
+
+        service = build("drive", "v3",
+                        credentials=creds)  # creds modified for streamlit deployment. Set to creds if running locally (commented out above)
 
         file_metadata = {"name": "yoink.jpg", "parents": [folder_id]}
 
@@ -73,3 +81,7 @@ def upload_to_folder(folder_id, picPath):
     except HttpError as error:
         print(f"An error occurred: {error}")
         return None
+
+
+if __name__ == "__main__":
+    upload_to_folder(folder_id="1l_FSxH89e9iR6C32PcLWdqpJ3cdnEDPi", picPath='download.jpg')
