@@ -1,11 +1,7 @@
-# Install the assemblyai package by executing the command "pip install assemblyai"
-
 import assemblyai as aai
 import streamlit as st
 
 aai.settings.api_key = st.secrets["API_KEY_1"]
-
-# audio_file = "./local_file.mp3"
 
 ##for international convertion
 config = aai.TranscriptionConfig(
