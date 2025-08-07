@@ -1,13 +1,11 @@
-import os
-import tempfile
+import streamlit as st
+import os, tempfile
 import time
 
-import streamlit as st
-
 from audioToTextInput import transcribe_file
-from driveUpload import upload_to_folder
-from image_gen import image_gen
 from textDataExtraction import extract_data
+from image_gen import image_gen
+from driveUpload import upload_to_folder
 
 st.title("Transcribe audio, image generator")
 
@@ -19,8 +17,8 @@ uploadedWav = st.file_uploader("option 2: Upload own .wav file or use an example
 with open('firstConvo.wav', 'rb') as f:
     exampleConvo = f.read()
 
-# with open('secondConvo(chinese).wav', 'rb') as f:
-#     exampleConvo2 = f.read()
+with open('secondConvo(chinese).wav', 'rb') as f:
+    exampleConvo2 = f.read()
 
 st.download_button(
     label="Download example to test",
@@ -29,12 +27,12 @@ st.download_button(
     mime="audio/wav",
 )
 
-# st.download_button(
-#     label="下载示例",
-#     data=exampleConvo2,
-#     file_name="secondConvo(chinese).wav",
-#     mime="audio/wav",
-# )
+st.download_button(
+    label="下载示例",
+    data=exampleConvo2,
+    file_name="secondConvo(chinese).wav",
+    mime="audio/wav",
+)
 
 audioWav = recordedAudio if recordedAudio is not None else uploadedWav
 
@@ -85,7 +83,6 @@ if audioWav:
                 time.sleep(1)
                 my_bar.empty()
 
-                st.write(
-                    "All generated images can be found here: https://drive.google.com/drive/folders/1l_FSxH89e9iR6C32PcLWdqpJ3cdnEDPi?usp=sharing")
+                st.write("All generated images can be found here: https://drive.google.com/drive/folders/1l_FSxH89e9iR6C32PcLWdqpJ3cdnEDPi?usp=sharing")
 else:
     st.write("Awaiting audio")
